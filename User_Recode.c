@@ -15,6 +15,8 @@ struct user
 void new_recode()
 {
     system("cls");
+    char newre[] = "New Recode";
+    printf("%90s", newre);
     struct user user;
 
     // Taking user name
@@ -48,6 +50,9 @@ void new_recode()
 
 void open_recode()
 {
+    system("cls");
+    char open[] = "Open Recode";
+    printf("%90s", open);
     char c;
     f = fopen("recode.txt", "r");
     while ((c = fgetc(f)) != EOF)
