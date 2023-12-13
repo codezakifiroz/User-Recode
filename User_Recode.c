@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
 #include <string.h>
 int menu;
+FILE *f;
 struct user
 {
     char name[20];
@@ -14,7 +16,6 @@ void new_recode()
 {
     system("cls");
     struct user user;
-    FILE *f;
 
     // Taking user name
     printf("\nEnter Name: ");
@@ -45,6 +46,17 @@ void new_recode()
     fclose(f);
 }
 
+void open_recode()
+{
+    char c;
+    f = fopen("recode.txt", "r");
+    while ((c = fgetc(f)) != EOF)
+        putchar(c);
+
+    fclose(f);
+    getch();
+}
+
 int main()
 {
     do
@@ -53,13 +65,16 @@ int main()
         system("cls");
         char app_name[] = "User Recode";
         printf("%90s\n", app_name);
-        printf("1. New Recode\n0. Exit\n");
+        printf("1. New Recode\n2. Open Recode\n0. Exit\n");
         scanf("%d", &menu);
         getchar();
         switch (menu)
         {
         case 1:
             new_recode();
+            break;
+        case 2:
+            open_recode();
             break;
         }
     } while (menu != 0);
